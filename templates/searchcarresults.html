@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+  <body>
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{appType}} | Car Project</h1>
+                <h3>Demo:
+                        <a href="{{url_for('createcar')}}">Create</a>
+                        / 
+                        <a href="{{url_for('readcar')}}">Read</a>
+                        / 
+                        <a href="{{url_for('updatecar')}}">Update</a>
+                        / 
+                        <a href="{{url_for('deletecar')}}">Delete</a>
+                        / 
+                        <a href="{{url_for('searchcar')}}">Search</a>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Search Results</h4>
+                {% if rows %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for car in rows %}
+                                <tr>
+                                    <td>{{ car.carname }}</td>
+                                    <td>{{ car.carbrand }}</td>
+                                    <td>{{ car.carmodel }}</td>
+                                    <td>{{ car.carprice }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No cars found matching your search.</p>
+                {% endif %}
+            </div>
+        </div>
+  </div>
+  </body>
+{% include 'footer.html' %}
